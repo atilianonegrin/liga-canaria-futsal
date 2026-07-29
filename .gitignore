@@ -1,0 +1,33 @@
+# .NET
+**/bin/
+**/obj/
+*.user
+*.suo
+.vs/
+
+# Angular / Node
+**/node_modules/
+**/dist/
+**/.angular/
+npm-debug.log*
+
+# Editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+appsettings.*.Local.json
+
+# Operating systems
+.DS_Store
+Thumbs.db
+
+# Tests and coverage
+**/coverage/
+TestResults/
