@@ -1,20 +1,78 @@
 # Liga Canaria de Futsal
 
-Aplicación web para la gestión y consulta de la Liga Canaria de Futsal.
+Sitio público y mobile-first para consultar competencias, partidos, posiciones,
+equipos y estadísticas de la Liga Canaria de Futsal.
 
-## Estado
+## Desarrollo
 
-Proyecto en etapa inicial. El alcance funcional, la arquitectura y el plan de implementación se documentarán antes de comenzar el desarrollo.
+```bash
+npm install
+npm start
+```
 
-## Tecnología acordada
+Los datos de la primera etapa son de solo lectura y se mantienen en
+`src/app/core/data/mock-league.data.ts`. Las pantallas acceden a ellos mediante
+`LeagueDataService`, preparado para sustituirse por una API en una segunda etapa.
 
-- Frontend: Angular
-- Backend: ASP.NET Core Web API
+## Publicación en Vercel
 
-## Funcionalidades previstas
+Importá este repositorio en Vercel. El framework y las rutas SPA se detectan
+mediante `vercel.json`; no se requiere backend para esta versión.
 
-- Fixture y resultados
-- Tabla de posiciones
-- Equipos y planteles
-- Goleadores y estadísticas
-- Panel de administración
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.19.
+
+## Development server
+
+To start a local development server, run:
+
+```bash
+ng serve
+```
+
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
