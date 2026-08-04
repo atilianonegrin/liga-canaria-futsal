@@ -10,6 +10,7 @@ import { CrestComponent } from '../../shared/crest.component';
     <main>
       <section class="hero" id="inicio">
         <div class="hero-copy">
+          <img class="hero-league-crest" src="assets/brand/liga-canaria-futsal-escudo.png" alt="Escudo oficial de la Liga Canaria de Futsal" width="112" height="112">
           <p class="eyebrow"><span></span>TEMPORADA {{ year }} · CANELONES</p>
           <h1>El futsal canario<br><em>se vive acá.</em></h1>
           <p class="hero-description">Fixture, resultados, posiciones y toda la información de la Liga Canaria de Futsal, en un solo lugar.</p>

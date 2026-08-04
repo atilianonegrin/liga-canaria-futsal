@@ -9,7 +9,7 @@ import { LeagueDataService } from '../services/league-data.service';
   template: `
     <header class="site-header">
       <a class="brand" routerLink="/" aria-label="Liga Canaria de Futsal, inicio">
-        <span class="league-mark">LCF</span>
+        <img class="league-mark" src="assets/brand/liga-canaria-futsal-escudo.png" alt="" width="52" height="52">
         <span><b>Liga Canaria</b><small>Futsal</small></span>
       </a>
       <nav class="desktop-nav" aria-label="Navegación principal">
