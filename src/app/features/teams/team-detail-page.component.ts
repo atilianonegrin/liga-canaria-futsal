@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { LeagueDataService } from '../../core/services/league-data.service';
 import { CrestComponent } from '../../shared/crest.component';
+import { Player } from '../../core/models/league.models';
 
 @Component({
   selector: 'app-team-detail-page',
@@ -34,7 +35,7 @@ export class TeamDetailPageComponent {
   protected readonly year = Number(this.route.snapshot.paramMap.get('year'));
   protected readonly teamId = this.route.snapshot.paramMap.get('teamId') ?? '';
   protected readonly team = this.data.getTeam(this.year, this.teamId);
-  protected readonly players = this.team?.players.filter((player) => player.branch === 'masculino') ?? [];
+  protected readonly players = this.team?.players.filter((player: Player) => player.branch === 'masculino') ?? [];
   protected readonly standing = this.data.getStandings(this.year).find((item) => item.id === this.teamId);
   protected initials(name: string) { return name.split(' ').filter(Boolean).slice(0, 2).map((part) => part[0]).join('').toUpperCase(); }
 }
