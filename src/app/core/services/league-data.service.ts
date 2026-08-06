@@ -1,28 +1,29 @@
 import { Injectable } from '@angular/core';
 import { AVAILABLE_SEASONS, COMPETITIONS, DIVISIONAL_A_TEAM_IDS, MATCHES, SCORERS, STANDINGS } from '../data/mock-league.data';
 import { TEAMS } from '../data/mock-teams.data';
+import { Player, Team } from '../models/league.models';
 
 @Injectable({ providedIn: 'root' })
 export class LeagueDataService {
   readonly seasons = AVAILABLE_SEASONS;
   readonly competitions = COMPETITIONS;
 
-  getTeams(year: number) {
+  getTeams(year: number): Team[] {
     return this.hasData(year) ? TEAMS : [];
   }
 
-  getTeam(year: number, teamId: string) {
+  getTeam(year: number, teamId: string): Team | undefined {
     return this.getTeams(year).find((team) => team.id === teamId);
   }
 
-  getDivisionalATeams(year: number) {
+  getDivisionalATeams(year: number): Team[] {
     if (!this.hasData(year)) return [];
     return DIVISIONAL_A_TEAM_IDS
       .map((id) => this.getTeam(year, id))
-      .filter((team) => team !== undefined);
+      .filter((team): team is Team => team !== undefined);
   }
 
-  getPlayer(year: number, teamId: string, playerId: string) {
+  getPlayer(year: number, teamId: string, playerId: string): Player | undefined {
     return this.getTeam(year, teamId)?.players.find((player) => player.id === playerId);
   }
 
