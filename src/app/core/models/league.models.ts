@@ -38,3 +38,22 @@ export interface Scorer {
   team: string;
   goals: number;
 }
+
+export type SquadBranch = 'masculino' | 'femenino';
+
+export interface Player {
+  id: string;
+  name: string;
+  branch: SquadBranch;
+}
+
+export interface Team {
+  id: string;
+  name: string;
+  shortName: string;
+  players: Player[];
+}
+
+export interface CompetitionTeam extends Team {
+  position?: number;
+}
