@@ -16,7 +16,7 @@ import { LeagueDataService } from '../services/league-data.service';
         <a routerLink="/">Inicio</a>
         <a [routerLink]="['/temporadas', selectedYear, 'divisional-a']">Divisional A</a>
         <a routerLink="/" fragment="competencias">Competencias</a>
-        <a routerLink="/" fragment="equipos">Equipos</a>
+        <a [routerLink]="['/temporadas', selectedYear, 'equipos']">Equipos</a>
       </nav>
       <label class="season-selector">
         <span>Temporada</span>
@@ -36,7 +36,11 @@ export class SiteHeaderComponent {
   }
   protected changeSeason(year: number | string): void {
     const value = Number(year);
-    if (this.router.url.includes('/divisional-a')) {
+    const teamRoute = this.router.url.match(/\/equipos(?:\/([^/?]+))?(?:\/jugadores\/([^/?]+))?/);
+    if (teamRoute) {
+      const segments = ['/temporadas', value, 'equipos', teamRoute[1], teamRoute[2] ? 'jugadores' : undefined, teamRoute[2]].filter(Boolean);
+      this.router.navigate(segments);
+    } else if (this.router.url.includes('/divisional-a')) {
       this.router.navigate(['/temporadas', value, 'divisional-a']);
     } else {
       this.router.navigate(['/'], { queryParams: { temporada: value } });
