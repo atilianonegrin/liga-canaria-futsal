@@ -17,13 +17,13 @@ import { CrestComponent } from '../../shared/crest.component';
         <section class="empty-season"><span>{{ year }}</span><h2>Temporada pendiente de carga</h2><p>La estructura ya está pronta. Cuando carguemos los datos históricos de {{ year }}, acá aparecerán partidos, posiciones y goleadores.</p><a class="button primary" routerLink="/">Volver al inicio</a></section>
       } @else {
         <section class="section division-content" id="apertura">
-          <div class="division-title"><div><p class="eyebrow"><span></span>APERTURA · FECHA 4 DE 9</p><h2>Resumen del torneo</h2></div><nav class="tabs"><a class="active" href="#apertura">Resumen</a><a href="#partidos">Partidos</a><a href="#tabla">Tabla</a><a href="#goleadores">Goleadores</a></nav></div>
+          <div class="division-title"><div><p class="eyebrow"><span></span>APERTURA · 9 FECHAS</p><h2>Resumen del torneo</h2></div><nav class="tabs"><a class="active" href="#apertura">Resumen</a><a href="#partidos">Partidos</a><a href="#tabla">Tabla</a><a [routerLink]="['/temporadas', year, 'equipos']">Equipos</a><a href="#goleadores">Goleadores</a></nav></div>
           <div class="dashboard-grid">
             <article class="panel standings-panel" id="tabla">
               <div class="panel-heading"><div><small>APERTURA</small><h3>Tabla de posiciones</h3></div><span>Fecha 4</span></div>
               <div class="table-row table-head"><span>POS</span><span>EQUIPO</span><span>PJ</span><span>DG</span><span>PTS</span></div>
               @for (team of standings; track team.id; let i = $index) {
-                <div class="table-row"><span class="position" [class.leader]="i === 0">{{ i + 1 }}</span><span class="team-cell"><app-crest [shortName]="team.shortName" /><b>{{ team.name }}</b></span><span>{{ team.played }}</span><span>{{ team.goalsFor - team.goalsAgainst > 0 ? '+' : '' }}{{ team.goalsFor - team.goalsAgainst }}</span><strong>{{ team.points }}</strong></div>
+                <a class="table-row table-link" [routerLink]="['/temporadas', year, 'equipos', team.id]" [attr.aria-label]="'Ver equipo ' + team.name"><span class="position" [class.leader]="i === 0">{{ i + 1 }}</span><span class="team-cell"><app-crest [shortName]="team.shortName" /><b>{{ team.name }}</b></span><span>{{ team.played }}</span><span>{{ team.goalsFor - team.goalsAgainst > 0 ? '+' : '' }}{{ team.goalsFor - team.goalsAgainst }}</span><strong>{{ team.points }}</strong></a>
               }
             </article>
             <article class="panel" id="partidos">
