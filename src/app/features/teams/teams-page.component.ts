@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { LeagueDataService } from '../../core/services/league-data.service';
 import { CrestComponent } from '../../shared/crest.component';
+import { Player, Team } from '../../core/models/league.models';
 
 @Component({
   selector: 'app-teams-page',
@@ -32,5 +33,5 @@ export class TeamsPageComponent {
   protected readonly data = inject(LeagueDataService);
   protected readonly year = Number(inject(ActivatedRoute).snapshot.paramMap.get('year'));
   protected readonly teams = this.data.getDivisionalATeams(this.year);
-  protected malePlayers(team: (typeof this.teams)[number]) { return team.players.filter((player) => player.branch === 'masculino'); }
+  protected malePlayers(team: Team): Player[] { return team.players.filter((player: Player) => player.branch === 'masculino'); }
 }
